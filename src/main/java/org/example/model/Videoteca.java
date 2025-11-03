@@ -61,6 +61,7 @@ public class Videoteca {
         return films.stream().filter(f -> f.getAnnoUscita() == anno).toList();
     }
 
+    //altre operazioni
     public void sostituisciFilms(List<Film> nuoviFilms){
         films.clear();
         films.addAll(nuoviFilms);

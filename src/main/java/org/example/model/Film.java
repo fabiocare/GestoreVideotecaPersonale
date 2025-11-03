@@ -51,7 +51,7 @@ public  class Film {
         private final String regista;
         private final int annoUscita;
         private Genere genere = Genere.ALTRO;
-        private int valutazione = 0;
+        private int valutazione = 1;
         private StatoVisione statoVisione = StatoVisione.DA_VEDERE;
 
         public Builder(String titolo, String regista, int annoUscita) {
