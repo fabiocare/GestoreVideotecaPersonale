@@ -31,13 +31,13 @@ public class VideotecaTest {
 
     @Test
     void testRimozioneFilm(){
-        videoteca.rimuoviFilm("Oldboy");
+        videoteca.rimuoviFilm("Oldboy", "Park Chan-wook");
         assertTrue(videoteca.getTuttiFilms().isEmpty());
     }
 
     @Test
     void testModificaFilm(){
-        videoteca.modificaFilm("Oldboy", StatoVisione.DA_VEDERE, 4);
+        videoteca.modificaFilm("Oldboy", "Park Chan-wook", StatoVisione.DA_VEDERE, 4);
         Film aggiornato = videoteca.getTuttiFilms().getFirst();
         assertEquals(4,aggiornato.getValutazione());
         assertEquals(StatoVisione.DA_VEDERE, aggiornato.getStatoVisione());

@@ -27,6 +27,6 @@ class FilmTest {
                 new Film.Builder("Antico Film", "Regista Storico", 1800) // anno non valido
                         .build()
         );
-        assertEquals("L'anno di uscita non può essere precedente al 1888", exception.getMessage());
+        assertEquals("L'anno di uscita non può essere precedente al 1888 o superiore al 2025", exception.getMessage());
     }
 }

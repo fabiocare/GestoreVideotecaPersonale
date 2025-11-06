@@ -15,7 +15,7 @@ public class GestoreComandiTest {
 
     @BeforeEach
     void setUp(){
-        videoteca = videoteca.getInstance();
+        videoteca = Videoteca.getInstance();
         videoteca.svuotaVideoteca();
         gestore = new GestoreComandi();
     }

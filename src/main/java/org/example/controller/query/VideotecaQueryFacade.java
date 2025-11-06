@@ -40,11 +40,11 @@ public class VideotecaQueryFacade {
 
     //ordinamento strategy
     public List<Film> ordinaPerTitolo(){
-        return new OrdinaFilmsQuery(videoteca, Comparator.comparing(Film::getTitolo)).esegui();
+        return new OrdinaFilmsQuery(videoteca, Comparator.comparing(Film::getTitolo, String.CASE_INSENSITIVE_ORDER)).esegui();
     }
 
     public List<Film> ordinaPerTitoloDecrescente(){
-        return new OrdinaFilmsQuery(videoteca, Comparator.comparing(Film::getTitolo).reversed()).esegui();
+        return new OrdinaFilmsQuery(videoteca, Comparator.comparing(Film::getTitolo, String.CASE_INSENSITIVE_ORDER).reversed()).esegui();
     }
 
     public List<Film> ordinaPerValutazione(){

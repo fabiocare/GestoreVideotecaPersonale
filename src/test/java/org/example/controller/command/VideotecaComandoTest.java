@@ -37,7 +37,7 @@ public class VideotecaComandoTest {
                 .build();
         videoteca.aggiungiFilm(film);
 
-        Comando comando = new RimuoviFilmComando(videoteca, "Tre uomini e una gamba");
+        Comando comando = new RimuoviFilmComando(videoteca, "Tre uomini e una gamba", "Massimo Venier");
         comando.esegui();
 
         assertFalse(videoteca.getTuttiFilms().contains(film));
@@ -52,10 +52,9 @@ public class VideotecaComandoTest {
                 .build();
         videoteca.aggiungiFilm(filmIniziale);
 
-        Comando comando = new ModificaFilmComando(videoteca, filmIniziale.getTitolo(), StatoVisione.VISTO, 4);
+        Comando comando = new ModificaFilmComando(videoteca, filmIniziale.getTitolo(), filmIniziale.getRegista(), StatoVisione.VISTO, 4);
         comando.esegui();
-
-        Film modificato = videoteca.cercaPerTitolo("Dune").getFirst();
+        Film modificato = videoteca.getTuttiFilms().getFirst();
         assertEquals(4, modificato.getValutazione());
         assertEquals(StatoVisione.VISTO, modificato.getStatoVisione());
     }

@@ -58,8 +58,8 @@ public  class Film {
             this.titolo = Objects.requireNonNull(titolo);
             this.regista = Objects.requireNonNull(regista);
             this.annoUscita = annoUscita;
-            if (annoUscita < 1888) {
-                throw new IllegalArgumentException("L'anno di uscita non può essere precedente al 1888");
+            if (annoUscita < 1888 || annoUscita > 2025) {
+                throw new IllegalArgumentException("L'anno di uscita non può essere precedente al 1888 o superiore al 2025");
             }
         }
 

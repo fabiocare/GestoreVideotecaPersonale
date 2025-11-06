@@ -22,13 +22,13 @@ public class Videoteca {
         films.add(film);
     }
 
-    public void rimuoviFilm(String titolo){
-        films.removeIf(f -> f.getTitolo().equals(titolo));
+    public void rimuoviFilm(String titolo, String regista){
+        films.removeIf(f -> f.getTitolo().equalsIgnoreCase(titolo) && f.getRegista().equalsIgnoreCase(regista));
     }
 
-    public void modificaFilm(String titolo,StatoVisione nuovoStato, int nuovaValutazione){
+    public void modificaFilm(String titolo, String regista, StatoVisione nuovoStato, int nuovaValutazione){
         for (Film film : films) {
-            if (film.getTitolo().equals(titolo)) {
+            if (film.getTitolo().equalsIgnoreCase(titolo) && film.getRegista().equalsIgnoreCase(regista)) {
                 Film nuovoFilm = new Film.Builder(film.getTitolo(), film.getRegista(), film.getAnnoUscita())
                         .genere(film.getGenere())
                         .statoVisione(nuovoStato)
