@@ -258,7 +258,7 @@ public class InterfacciaUtente {
     private void vistaTabella(List<Film> films){
         System.out.printf("%-30s %-20s %-15s %-15s %-15s %-10s%n",
                         "Titolo", "Regista", "Anno", "Genere", "StatoVisione", "Valutazione");
-        System.out.println("------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------------");
         for(Film f : films){
             System.out.printf("%-30s %-20s %-15s %-15s %-15s %-10s%n",
                     f.getTitolo(),
@@ -286,13 +286,46 @@ public class InterfacciaUtente {
                 vistaTabella(new VideotecaQueryFacade().cercaPerRegista(regista));
             }
             case "3" -> {
-                System.out.println("Inserisci genere (COMMEDIA, HORROR, AZIONE, ALTRO): ");
-                Genere genere = Genere.valueOf(scanner.nextLine().toUpperCase());
+                System.out.println("Scegli il genere:");
+                for (Genere g : Genere.values()) {
+                    System.out.print((g.ordinal() + 1) + ". " + g.name() + " ");
+                }
+                System.out.println();
+                int indexGenere;
+                try {
+                    indexGenere = Integer.parseInt(scanner.nextLine()) - 1;
+                } catch (NumberFormatException e) {
+                    System.out.println("Input non valido.");
+                    return;
+                }
+
+                if (indexGenere < 0 || indexGenere >= Genere.values().length) {
+                    System.out.println("Genere non valido.");
+                    return;
+                }
+                Genere genere = Genere.values()[indexGenere];
                 vistaTabella(new VideotecaQueryFacade().filtraPerGenere(genere));
-            }
+                }
+
             case "4" -> {
-                System.out.println("Inserisci stato di visione(DA_VEDERE, IN_VISIONE, VISTO): ");
-                StatoVisione statoVisione = StatoVisione.valueOf(scanner.nextLine().toUpperCase());
+                System.out.println("Scegli lo stato di visione:");
+                for (StatoVisione s : StatoVisione.values()) {
+                    System.out.print((s.ordinal() + 1) + ". " + s.name() + " ");
+                }
+                System.out.println();
+                int indexStato;
+                try {
+                    indexStato = Integer.parseInt(scanner.nextLine()) - 1;
+                } catch (NumberFormatException e) {
+                    System.out.println("Input non valido.");
+                    return;
+                }
+
+                if (indexStato < 0 || indexStato >= StatoVisione.values().length) {
+                    System.out.println("Stato di visione non valido.");
+                    return;
+                }
+                StatoVisione statoVisione = StatoVisione.values()[indexStato];
                 vistaTabella(new VideotecaQueryFacade().filtraPerStatoVisione(statoVisione));
             }
             case "5" -> {
